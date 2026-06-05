@@ -130,54 +130,138 @@ ngrok version
 
 ---
 
-### 2. 設定 Webhook URL
+### 2. 啟動程式
 
-啟動程式：
+執行：
 
 ```bash
 python linechatbot.py
 ```
 
-畫面會顯示：
+啟動後畫面會顯示類似：
 
 ```text
 https://xxxxxxxx.ngrok-free.app
 ```
 
-將：
+---
+
+### 3. 設定 Webhook URL
+
+進入：
+
+```text
+LINE Developers
+→ Messaging API
+→ Webhook settings
+```
+
+找到：
+
+```text
+Webhook URL
+```
+
+將 ngrok 網址後面加上：
+
+```text
+/callback
+```
+
+例如：
 
 ```text
 https://xxxxxxxx.ngrok-free.app/callback
 ```
 
-填入：
-
-```text
-LINE Developers
-→ Messaging API
-→ Webhook URL
-```
-
-並啟用：
-
-```text
-Use webhook
-```
+填入 Webhook URL 欄位。
 
 ---
 
-## 執行程式
+### 4. 啟用 Webhook
+
+確認以下設定：
+
+```text
+Webhook URL
+https://xxxxxxxx.ngrok-free.app/callback
+
+Use webhook
+Enabled
+```
+
+點選：
+
+```text
+Verify
+```
+
+若顯示：
+
+```text
+Success
+```
+
+表示 LINE 已成功連線至你的 Flask Server。
+
+---
+
+### 5. 加入 Bot 好友
+
+回到：
+
+```text
+Messaging API
+```
+
+頁面。
+
+使用：
+
+```text
+QR Code
+```
+
+或：
+
+```text
+Bot Basic ID
+```
+
+將 Bot 加入好友。
+
+之後即可開始與 AI 聊天。
+
+---
+
+### 注意
+
+每次重新執行程式時：
 
 ```bash
 python linechatbot.py
 ```
 
-成功後會看到：
+ngrok 都可能產生新的網址，例如：
 
 ```text
-https://xxxxxxxx.ngrok-free.app
- * Running on http://127.0.0.1:5000/
+https://abcd1234.ngrok-free.app
 ```
+
+此時必須重新更新：
+
+```text
+Webhook URL
+```
+
+改為：
+
+```text
+https://abcd1234.ngrok-free.app/callback
+```
+
+否則 LINE 將無法收到訊息。
+
 
 ---
 
