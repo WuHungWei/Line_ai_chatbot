@@ -48,6 +48,73 @@ CGU_OPENAI_API_KEY=你的_CGU_API_KEY
 
 ---
 
+## Ngrok 設定
+
+本專案使用 pyngrok 建立公開網址。
+
+### 1. 註冊 ngrok 帳號
+
+前往：
+
+https://dashboard.ngrok.com/
+
+註冊並登入帳號。
+
+---
+
+### 2. 取得 Authtoken
+
+登入後至：
+
+```text
+Getting Started
+→ Your Authtoken
+```
+
+取得你的：
+
+```text
+YOUR_AUTHTOKEN
+```
+
+---
+
+### 3. 安裝並設定 ngrok
+
+下載 ngrok：
+
+https://ngrok.com/download
+
+解壓縮後開啟 PowerShell，執行：
+
+```bash
+ngrok config add-authtoken YOUR_AUTHTOKEN
+```
+
+例如：
+
+```bash
+ngrok config add-authtoken 2abcxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+成功後會看到：
+
+```text
+Authtoken saved to configuration file
+```
+
+---
+
+### 4. 驗證安裝
+
+```bash
+ngrok version
+```
+
+若成功顯示版本資訊，即表示設定完成。
+
+---
+
 ## LINE Developers 設定
 
 ### 1. 建立 Messaging API Channel
@@ -59,7 +126,7 @@ CGU_OPENAI_API_KEY=你的_CGU_API_KEY
 * Channel Access Token
 * Channel Secret
 
-填入 `.env`
+並填入 `.env`
 
 ---
 
@@ -83,10 +150,11 @@ https://xxxxxxxx.ngrok-free.app
 https://xxxxxxxx.ngrok-free.app/callback
 ```
 
-填入 LINE Developers 的：
+填入：
 
 ```text
-Messaging API
+LINE Developers
+→ Messaging API
 → Webhook URL
 ```
 
@@ -178,16 +246,33 @@ chat_history.json
 
 * 請勿將 `.env` 上傳至 GitHub。
 * 請勿公開自己的 LINE Token。
+* 請勿公開自己的 Channel Secret。
 * 請勿公開自己的 CGU API Key。
-* 首次執行 pyngrok 可能會自動下載 ngrok。
+* `chat_history.json` 建議加入 `.gitignore`。
+* pyngrok 首次執行時可能會自動下載 ngrok。
+* 建議先完成 `ngrok config add-authtoken YOUR_AUTHTOKEN` 設定，以避免匿名模式限制。
+
+---
+
+## GitHub 建議設定
+
+建立 `.gitignore`：
+
+```gitignore
+.env
+chat_history.json
+__pycache__/
+*.pyc
+.vscode/
+.idea/
+```
 
 ---
 
 ## 作者
 
-National Formosa University Cloud Computing Course Project
+National Formosa University
+
+Cloud Computing Course Project
 
 LINE AI Chatbot with CGU LLM API
-
-```
-```
