@@ -351,12 +351,3 @@ __pycache__/
 .idea/
 ```
 
----
-
-## 作者
-
-National Formosa University
-
-Cloud Computing Course Project
-
-LINE AI Chatbot with CGU LLM API
