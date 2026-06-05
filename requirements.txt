@@ -1,0 +1,6 @@
+Flask==2.0.3
+line-bot-sdk==1.18.0
+pyngrok==7.2.8
+python-dotenv==1.2.2
+openai==1.84.0
+Werkzeug==2.0.3

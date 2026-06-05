@@ -1,0 +1,193 @@
+# LINE AI Chatbot
+
+使用 LINE Messaging API 與 CGU LLM API 建立的 AI 聊天機器人。
+
+## 功能
+
+* AI 問答（gpt-5.4-mini）
+* 對話記憶（最近 100 筆）
+* JSON 持久化儲存
+* LINE Bot 即時聊天
+* pyngrok 自動建立公開網址
+
+---
+
+## 環境需求
+
+* Python 3.11
+* Conda（建議）
+
+---
+
+## 建立虛擬環境
+
+```bash
+conda create -n linebot python=3.11
+conda activate linebot
+```
+
+---
+
+## 安裝套件
+
+```bash
+pip install -r requirements.txt
+```
+
+---
+
+## 建立 .env
+
+在專案根目錄建立 `.env`：
+
+```env
+CHANNEL_ACCESS_TOKEN=你的_LINE_CHANNEL_ACCESS_TOKEN
+CHANNEL_SECRET=你的_LINE_CHANNEL_SECRET
+CGU_OPENAI_API_KEY=你的_CGU_API_KEY
+```
+
+---
+
+## LINE Developers 設定
+
+### 1. 建立 Messaging API Channel
+
+至 LINE Developers 建立 Messaging API Channel。
+
+取得：
+
+* Channel Access Token
+* Channel Secret
+
+填入 `.env`
+
+---
+
+### 2. 設定 Webhook URL
+
+啟動程式：
+
+```bash
+python linechatbot.py
+```
+
+畫面會顯示：
+
+```text
+https://xxxxxxxx.ngrok-free.app
+```
+
+將：
+
+```text
+https://xxxxxxxx.ngrok-free.app/callback
+```
+
+填入 LINE Developers 的：
+
+```text
+Messaging API
+→ Webhook URL
+```
+
+並啟用：
+
+```text
+Use webhook
+```
+
+---
+
+## 執行程式
+
+```bash
+python linechatbot.py
+```
+
+成功後會看到：
+
+```text
+https://xxxxxxxx.ngrok-free.app
+ * Running on http://127.0.0.1:5000/
+```
+
+---
+
+## 指令
+
+### 查看記憶狀態
+
+```text
+@記憶狀態
+```
+
+顯示目前保存的聊天記錄數量。
+
+---
+
+### 清除記憶
+
+```text
+@清除記憶
+```
+
+刪除目前使用者所有聊天記錄。
+
+---
+
+### 幫助
+
+```text
+@幫助
+```
+
+顯示可用指令。
+
+---
+
+## 專案結構
+
+```text
+.
+├── linechatbot.py
+├── server.py
+├── requirements.txt
+├── .env
+└── chat_history.json
+```
+
+---
+
+## 聊天記錄
+
+聊天紀錄會自動儲存在：
+
+```text
+chat_history.json
+```
+
+每位使用者擁有獨立聊天記錄。
+
+系統最多保存最近 100 筆對話內容。
+
+重新啟動程式後聊天記錄仍會保留。
+
+---
+
+## 注意事項
+
+* 請勿將 `.env` 上傳至 GitHub。
+* 請勿公開自己的 LINE Token。
+* 請勿公開自己的 CGU API Key。
+* 首次執行 pyngrok 可能會自動下載 ngrok。
+
+---
+
+## 作者
+
+National Formosa University Cloud Computing Course Project
+
+LINE AI Chatbot with CGU LLM API
+
+```
+```
